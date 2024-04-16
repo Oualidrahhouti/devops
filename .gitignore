@@ -1,0 +1,8 @@
+node_modules
+.gitignore_*
+job_*
+test_*
+github-actions-demo_*
+average_*
+cypress-tests_*
+sample_spec_*
