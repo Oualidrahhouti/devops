@@ -1,12 +1,25 @@
 name: Cypress Tests
-run-name: ${{ github.actor }} is running Cypress tests 
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-    basic-ubuntu-20:
-      runs-on: ubuntu-20.04
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4
-  
-        - name: Cypress tests
-          run: npx cypress run
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install Cypress
+      run: npm install cypress --save-dev
+
+    - name: Run Cypress tests
+      run: npx cypress run
